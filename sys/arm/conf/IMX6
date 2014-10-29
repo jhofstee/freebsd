@@ -130,10 +130,10 @@ device  	u3g			# USB modems
 # NOTE: serial console will be disabled if syscons enabled
 # Uncomment following lines for framebuffer/syscons support
 # Wandboard has no video console support yet.
-#device  	sc
-#device  	kbdmux
-#options  	SC_DFLT_FONT		# compile font in
-#makeoptions  	SC_DFLT_FONT=cp437
+device  	sc
+device  	kbdmux
+options  	SC_DFLT_FONT		# compile font in
+makeoptions  	SC_DFLT_FONT=cp437
 
 # required for netbooting
 #options  	BOOTP

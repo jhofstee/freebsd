@@ -85,7 +85,7 @@ CFLAGS+=	-fno-strict-aliasing
 .endif
 #WERROR?=	-Werror
 CFLAGS+=	${WERROR}
-CFLAGS+=	-D_KERNEL
+CFLAGS+=	-D_KERNEL -D__FreeBSD__ -U__linux__ -nostdinc
 CFLAGS+=	-DKLD_MODULE
 
 # Don't use any standard or source-relative include directories.
@@ -205,7 +205,7 @@ ${FULLPROG}: ${OBJS}
 	grep -v '^#' < ${EXPORT_SYMS} > export_syms
 .endif
 	awk -f ${SYSDIR}/conf/kmod_syms.awk ${.TARGET} \
-	    export_syms | xargs -J% ${OBJCOPY} % ${.TARGET}
+		export_syms | xargs -i% ${OBJCOPY} % ${.TARGET}
 .endif
 .endif
 .if !defined(DEBUG_FLAGS) && ${__KLD_SHARED} == no

@@ -39,7 +39,7 @@
 #define GCC_INSTALL_PREFIX ""
 
 /* Define to 1 if you have the `arc4random' function. */
-#define HAVE_ARC4RANDOM 1
+#undef HAVE_ARC4RANDOM
 
 /* Define to 1 if you have the `argz_append' function. */
 /* #undef HAVE_ARGZ_APPEND */
@@ -708,7 +708,7 @@
 /* #undef const */
 
 /* Define to a type to use for `error_t' if it is not otherwise available. */
-#define error_t int
+//#define error_t int
 
 /* Define to `int' if <sys/types.h> does not define. */
 /* #undef pid_t */

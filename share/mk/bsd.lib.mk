@@ -50,6 +50,10 @@ SHARED_CXXFLAGS+= -g
 CTFFLAGS+= -g
 .endif
 
+CFLAGS+= -I/home/jeroen/software/freebsd/glue/include
+SHARED_CFLAGS+= -I/home/jeroen/software/freebsd/glue/include
+STATIC_CXXFLAGS+= -I/home/jeroen/software/freebsd/glue/include
+
 .include <bsd.libnames.mk>
 
 # prefer .s to a .c, add .po, remove stuff not used in the BSD libraries

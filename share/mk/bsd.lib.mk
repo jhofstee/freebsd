@@ -175,9 +175,9 @@ lib${LIB}.a: ${OBJS} ${STATICOBJS}
 	@${ECHO} building static ${LIB} library
 	@rm -f ${.TARGET}
 .if !defined(NM)
-	@${AR} ${ARFLAGS} ${.TARGET} `lorder ${OBJS} ${STATICOBJS} | tsort -q` ${ARADD}
+	@${AR} ${ARFLAGS} ${.TARGET} `lorder ${OBJS} ${STATICOBJS} | ${TSORT}` ${ARADD}
 .else
-	@${AR} ${ARFLAGS} ${.TARGET} `NM='${NM}' lorder ${OBJS} ${STATICOBJS} | tsort -q` ${ARADD}
+	@${AR} ${ARFLAGS} ${.TARGET} `NM='${NM}' lorder ${OBJS} ${STATICOBJS} | ${TSORT}` ${ARADD}
 .endif
 	${RANLIB} ${RANLIBFLAGS} ${.TARGET}
 .endif
@@ -193,9 +193,9 @@ lib${LIB}_p.a: ${POBJS}
 	@${ECHO} building profiled ${LIB} library
 	@rm -f ${.TARGET}
 .if !defined(NM)
-	@${AR} ${ARFLAGS} ${.TARGET} `lorder ${POBJS} | tsort -q` ${ARADD}
+	@${AR} ${ARFLAGS} ${.TARGET} `lorder ${POBJS} | ${TSORT}` ${ARADD}
 .else
-	@${AR} ${ARFLAGS} ${.TARGET} `NM='${NM}' lorder ${POBJS} | tsort -q` ${ARADD}
+	@${AR} ${ARFLAGS} ${.TARGET} `NM='${NM}' lorder ${POBJS} | ${TSORT}` ${ARADD}
 .endif
 	${RANLIB} ${RANLIBFLAGS} ${.TARGET}
 .endif
@@ -227,11 +227,11 @@ ${SHLIB_NAME_FULL}: ${SOBJS}
 .if !defined(NM)
 	@${CC} ${LDFLAGS} ${SSP_CFLAGS} ${SOLINKOPTS} \
 	    -o ${.TARGET} -Wl,-soname,${SONAME} \
-	    `lorder ${SOBJS} | tsort -q` ${LDADD}
+	    `lorder ${SOBJS} | ${TSORT}` ${LDADD}
 .else
 	@${CC} ${LDFLAGS} ${SSP_CFLAGS} ${SOLINKOPTS} \
 	    -o ${.TARGET} -Wl,-soname,${SONAME} \
-	    `NM='${NM}' lorder ${SOBJS} | tsort -q` ${LDADD}
+	    `NM='${NM}' lorder ${SOBJS} | ${TSORT}` ${LDADD}
 .endif
 .if ${MK_CTF} != "no"
 	${CTFMERGE} ${CTFFLAGS} -o ${.TARGET} ${SOBJS}

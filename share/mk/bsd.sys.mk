@@ -30,7 +30,7 @@ CFLAGS+=	-std=${CSTD}
 .if ${WARNS} >= 1
 CWARNFLAGS+=	-Wsystem-headers
 .if !defined(NO_WERROR) && !defined(NO_WERROR.${COMPILER_TYPE})
-CWARNFLAGS+=	-Werror
+#CWARNFLAGS+=	-Werror
 .endif # !NO_WERROR && !NO_WERROR.${COMPILER_TYPE}
 .endif # WARNS >= 1
 .if ${WARNS} >= 2
@@ -98,7 +98,7 @@ CWARNFLAGS+=	-Wformat=2 -Wno-format-extra-args
 CWARNFLAGS.clang+=	-Wno-format-nonliteral
 .endif # WARNS <= 3
 .if !defined(NO_WERROR) && !defined(NO_WERROR.${COMPILER_TYPE})
-CWARNFLAGS+=	-Werror
+#CWARNFLAGS+=	-Werror
 .endif # !NO_WERROR && !NO_WERROR.${COMPILER_TYPE}
 .endif # WFORMAT > 0
 .endif # WFORMAT

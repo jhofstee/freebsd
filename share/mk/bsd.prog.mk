@@ -11,10 +11,10 @@
 CFLAGS+=${COPTS}
 .endif
 
-.if ${MK_ASSERT_DEBUG} == "no"
+#.if ${MK_ASSERT_DEBUG} == "no"
 CFLAGS+= -DNDEBUG
 NO_WERROR=
-.endif
+#.endif
 
 .if defined(DEBUG_FLAGS)
 CFLAGS+=${DEBUG_FLAGS}

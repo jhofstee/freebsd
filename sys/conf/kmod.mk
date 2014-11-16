@@ -85,7 +85,7 @@ CFLAGS+=	-fno-strict-aliasing
 .endif
 WERROR?=	-Werror
 CFLAGS+=	${WERROR}
-CFLAGS+=	-D_KERNEL
+CFLAGS+=	-D_KERNEL -D__FreeBSD__ -U__linux__ -nostdinc
 CFLAGS+=	-DKLD_MODULE
 
 # Don't use any standard or source-relative include directories.

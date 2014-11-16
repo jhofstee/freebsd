@@ -205,7 +205,7 @@ ${FULLPROG}: ${OBJS}
 	grep -v '^#' < ${EXPORT_SYMS} > export_syms
 .endif
 	awk -f ${SYSDIR}/conf/kmod_syms.awk ${.TARGET} \
-	    export_syms | xargs -J% ${OBJCOPY} % ${.TARGET}
+           export_syms | xargs -I% ${OBJCOPY} % ${.TARGET}
 .endif
 .endif
 .if !defined(DEBUG_FLAGS) && ${__KLD_SHARED} == no

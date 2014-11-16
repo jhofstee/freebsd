@@ -9,6 +9,6 @@ SRCS+=	os_bsd.h hptnr_os_bsd.c hptnr_osm_bsd.c hptnr_config.c
 OBJS+=	hptnr_lib.o
 
 hptnr_lib.o:
-	uudecode -p < ${HPTNR}/${MACHINE_ARCH}-elf.hptnr_lib.o.uu > ${.TARGET}
+	uudecode ${HPTNR}/${MACHINE_ARCH}-elf.hptnr_lib.o.uu > ${.TARGET}
 
 .include <bsd.kmod.mk>

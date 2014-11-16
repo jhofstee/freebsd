@@ -9,7 +9,7 @@ FIRMWARE_LICENSE=	intel_iwi
 CLEANFILES=	iwi_bss
 
 iwi_bss: ${.CURDIR}/../../../contrib/dev/iwi/ipw2200-bss.fw.uu
-	uudecode -p ${.CURDIR}/../../../contrib/dev/iwi/ipw2200-bss.fw.uu > ${.TARGET}
+	uudecode ${.CURDIR}/../../../contrib/dev/iwi/ipw2200-bss.fw.uu > ${.TARGET}
 
 .include <bsd.kmod.mk>
 

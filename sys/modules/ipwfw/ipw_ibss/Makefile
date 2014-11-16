@@ -9,7 +9,7 @@ FIRMWARE_LICENSE=	intel_ipw
 CLEANFILES=	ipw_ibss
 
 ipw_ibss: ${.CURDIR}/../../../contrib/dev/ipw/ipw2100-1.3-i.fw.uu
-	uudecode -p ${.CURDIR}/../../../contrib/dev/ipw/ipw2100-1.3-i.fw.uu > ${.TARGET}
+	uudecode ${.CURDIR}/../../../contrib/dev/ipw/ipw2100-1.3-i.fw.uu > ${.TARGET}
 
 .include <bsd.kmod.mk>
 

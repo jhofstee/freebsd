@@ -15,4 +15,4 @@ FIRMWS=	${_FIRM}:${KMOD}
 #FIRMWARE_LICENSE=
 
 ${_FIRM}: ${.CURDIR}/../../../contrib/dev/iwn/${_FIRM}.uu
-	uudecode -p $? > ${.TARGET}
+	uudecode $? > ${.TARGET}

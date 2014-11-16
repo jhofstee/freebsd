@@ -20,7 +20,7 @@ HPTMV_RAID_O = i386-elf.raid.o.uu
 .endif
 
 hptmvraid.o:	${HPTMV}/$(HPTMV_RAID_O)
-	uudecode -p < ${HPTMV}/$(HPTMV_RAID_O) > ${.TARGET}
+	uudecode ${HPTMV}/$(HPTMV_RAID_O) > ${.TARGET}
 
 #
 # Debug Options:

@@ -39,17 +39,20 @@ SRCS+=		kgss_if.h kgss_if.c
 MFILES=		kgssapi/kgss_if.m
 
 SRCS+=		gssd.h gssd_xdr.c gssd_clnt.c
-CLEANFILES=	gssd.h gssd_xdr.c gssd_clnt.c
+CLEANFILES=	gssd.h gssd_xdr.c gssd_clnt.c gssd.x
 
 S=		${.CURDIR}/../..
 
-gssd.h:		$S/kgssapi/gssd.x
-	RPCGEN_CPP=${CPP:Q} rpcgen -hM $S/kgssapi/gssd.x | grep -v pthread.h > gssd.h
+gssd.x: $S/kgssapi/gssd.x
+	ln -s $S/kgssapi/gssd.x gssd.x
 
-gssd_xdr.c:	$S/kgssapi/gssd.x
-	RPCGEN_CPP=${CPP:Q} rpcgen -c $S/kgssapi/gssd.x -o gssd_xdr.c
+gssd.h: gssd.x
+	RPCGEN_CPP=${CPP:Q} rpcgen -hM gssd.x | grep -v pthread.h > gssd.h
 
-gssd_clnt.c:	$S/kgssapi/gssd.x
-	RPCGEN_CPP=${CPP:Q} rpcgen -lM $S/kgssapi/gssd.x | grep -v string.h > gssd_clnt.c
+gssd_xdr.c: gssd.x
+	RPCGEN_CPP=${CPP:Q} rpcgen -c gssd.x | grep -v "string.h\|memory.h" > gssd_xdr.c
+
+gssd_clnt.c: gssd.x
+	RPCGEN_CPP=${CPP:Q} rpcgen -lM gssd.x | grep -v "string.h\|memory.h" > gssd_clnt.c
 
 .include <bsd.kmod.mk>
